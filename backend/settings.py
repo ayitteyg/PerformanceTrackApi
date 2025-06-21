@@ -50,11 +50,13 @@ DEBUG = False
 
 #ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 
-                  "https://performancetrack.onrender.com",
-                 'http://192.168.0.175:8000',
-                 'http://192.168.117.136:8000']
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'performancetrackapi.onrender.com',  # Remove 'https://'
+    '192.168.0.175',
+    '192.168.117.136'
+]
 
 # Application definition
 
