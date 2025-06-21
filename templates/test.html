@@ -1,0 +1,65 @@
+
+    <!-- SUMMARY TABLE -->
+    <div class="row mb-4">
+        <div class="col-lg-12 col-sm-12 mb-3 smry-table" data-aos="fade-right" data-aos-duration="3000">
+            <div class="card shadow card1">
+                <div class="card-body  smry-table">
+                    <h5 class="card-title text-center">Monthly Fuel Summary Table</h5>
+                    <table class="table table-bordered table-stripedd mt-3  smry-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Sales</th>
+                                <th>Target</th>
+                                <th>Percentage</th>
+                                <th>Growth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of fuelSummaryData.monthly_summary">
+                                <td class="text-muted">{{ item.month }}</td>
+                                <td class="text-muted">{{ item.sales | number:'1.0-1'}}</td>
+                                <td class="text-muted">{{ item.target | number:'1.0-1'}}</td>
+                                <!-- <td class="text-muted">{{ item.percentage }}%</td> -->
+
+                                <td class="text-muted">
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2">{{ item.percentage | number:'1.0-2' }}%</span>
+                                        <div class="progress flex-grow-1" style="height: 10px;">
+                                            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="item.percentage" [attr.aria-valuenow]="item.percentage" aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- <td class="text-muted">{{ item.growth }}</td> -->
+                                <td class="text-muted d-flex align-items-center">
+                                    <!-- Growth Value -->
+                                    <span class="me-2">{{ item.growth | number:'1.1-2' }}</span>
+
+                                    <!-- Conditional Icon -->
+                                    <ng-container *ngIf="item.growth > 0; else negativeGrowth">
+                                        <i class="bi bi-arrow-up text-success"></i>
+                                        <!-- Bootstrap Icon (green up arrow) -->
+                                    </ng-container>
+
+                                    <ng-template #negativeGrowth>
+                                        <ng-container *ngIf="item.growth < 0; else noGrowth">
+                                            <i class="bi bi-arrow-down text-danger"></i>
+                                            <!-- Bootstrap Icon (red down arrow) -->
+                                        </ng-container>
+                                    </ng-template>
+
+                                    <ng-template #noGrowth>
+                                        <i class="bi bi-dash text-secondary"></i>
+                                        <!-- Neutral icon for zero growth -->
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
