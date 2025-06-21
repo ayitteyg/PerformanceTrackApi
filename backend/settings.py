@@ -54,6 +54,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'performancetrackapi.onrender.com',  # Remove 'https://'
+    "performancetrack-sg9p.onrender.com",
     '192.168.0.175',
     '192.168.117.136'
 ]
@@ -107,7 +108,7 @@ TEMPLATES = [
 
 # Allow only your frontend (don't use '*')
 CORS_ALLOWED_ORIGINS = [
-    "https://performancetrack.onrender.com",  # Angular frontend URL (Render)
+    "https://performancetrack-sg9p.onrender.com",  # Angular frontend URL (Render)
     "http://localhost:4200",         # Optional: for local dev
     "http://127.0.0.1:4200", 
     "http://127.0.0.1:8000",  # Angular default dev server
