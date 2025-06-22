@@ -15,8 +15,11 @@ class Command(BaseCommand):
             status='active'
         )
         
+        print('loading started...')
+        
         if not attendants.exists():
             self.stdout.write(self.style.ERROR('No eligible attendants found!'))
+            print("No attendants found")
             return
 
         # 2. Set date range (last 12 months)

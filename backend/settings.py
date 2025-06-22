@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',  # <-- required for token auth
     'corsheaders',
     'django_filters',
+     'import_export',
     
 ]
 

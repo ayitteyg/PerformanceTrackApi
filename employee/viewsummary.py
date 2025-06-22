@@ -124,7 +124,7 @@ class CombinedPerformanceView(APIView):
 class UserPerformanceSummaryFuel(APIView):
     def get(self, request, user_id=None):
         if not user_id:
-            user_id = request.user.id
+            user_id = 3 #request.user.id
         
         # Get optional query parameters
         year = int(request.query_params.get('year', datetime.now().year))
@@ -173,7 +173,7 @@ class UserPerformanceSummaryFuel(APIView):
         daily_performance = FuelSales.objects.filter(
             user_id=user_id,
             date__year=year,                # Filter by selected year
-            date__gte=date_threshold        # Additionally filter by date range
+            # date__gte=date_threshold        # Additionally filter by date range
         ).values('date').annotate(
             performance=Avg('performance')  # Or any relevant field
         ).order_by('date')

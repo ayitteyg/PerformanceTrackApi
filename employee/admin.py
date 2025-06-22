@@ -3,11 +3,13 @@
 # admin.py
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Employee, PumpTarget, CustomUser, Captain, ShopTarget
+from .models import( Employee, PumpTarget, CustomUser, Captain, ShopTarget, FuelSales, ShopSales,
+                    WeeklyEvaluation, AttendanceRegister, AttendantEvaluation)
+from import_export.admin import ImportExportModelAdmin
 
 
 @admin.register(Employee)
-class EmployeeAdmin(admin.ModelAdmin):
+class EmployeeAdmin(ImportExportModelAdmin):
     list_display = ('name', 'job_description', 'status', 'site')
     list_filter = ('status', 'job_description', 'site')
     search_fields = ('name', 'contact')
@@ -34,11 +36,34 @@ class PumpTargetAdmin(admin.ModelAdmin):
     pass
 
 
-
 @admin.register(ShopTarget)
 class ShopTargetAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(FuelSales)
+class FuelSalesAdmin(ImportExportModelAdmin):
+    pass
+
+
+@admin.register(ShopSales)
+class ShopSalesAdmin(ImportExportModelAdmin):
+    pass
+
+
+@admin.register(WeeklyEvaluation)
+class WeeklyEvaluationAdmin(ImportExportModelAdmin):
+    pass
+
+
+@admin.register(AttendanceRegister)
+class AttendanceRegisterAdmin(ImportExportModelAdmin):
+    pass
+
+
+
+@admin.register(AttendantEvaluation)
+class AttendantEvaluationAdmin(ImportExportModelAdmin):
+    pass
 
 @admin.register(Captain)
 class CaptainAdmin(admin.ModelAdmin):

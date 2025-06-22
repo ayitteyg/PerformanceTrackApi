@@ -3,6 +3,7 @@ secrets/
 secrets/*.json
 data_excel/
 data_json/
+management/*
 
 # Ignore environment variables
 .env
