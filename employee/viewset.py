@@ -15,6 +15,7 @@ from django.utils.timezone import now
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Avg, Q, Sum
 
 from . functions import print_model_objects, reset_model_data, convert_to_json, read_file
 
@@ -138,11 +139,22 @@ class ActiveAttendantViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class CaptainViewSet(viewsets.ReadOnlyModelViewSet):  # ReadOnly since we’re only listing
-    queryset = Captain.objects.all()
+    queryset = Captain.objects.filter(
+        Q(user__employee_profile__status='active') & 
+        Q(user__employee_profile__job_description__in=['customer_champion'])
+    )
     serializer_class = CaptainSerializer
+
+
+
+class CaptainViewSetShop(viewsets.ReadOnlyModelViewSet):  # ReadOnly since we’re only listing
+    queryset = Captain.objects.filter(
+        Q(user__employee_profile__status='active') & 
+        Q(user__employee_profile__job_description__in=['service_champion'])
+    )
+    serializer_class = CaptainSerializer
+
     
-
-
 class WeeklyEvaluationViewSet(viewsets.ModelViewSet):
     queryset = WeeklyEvaluation.objects.all()
     serializer_class = WeeklyEvaluationSerializer

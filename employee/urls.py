@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .auth_token import CustomAuthToken
 
 from .viewset import (EmployeeViewSet, FuelSalesViewSet, ShopSalesViewSet, BulkAttendanceViewSet,
-                      CreditSalesViewSet, CreditCollectionViewSet, CaptainViewSet,
+                      CreditSalesViewSet, CreditCollectionViewSet, CaptainViewSet, CaptainViewSetShop,
                       ActiveAttendantViewSet, WeeklyEvaluationViewSet, WeeklyEvaluationViewSetPost)
 
 
@@ -19,10 +19,10 @@ router.register(r'weekly-evaluations', WeeklyEvaluationViewSet, basename='weekly
 router.register(r'weekly-evaluations-post', WeeklyEvaluationViewSetPost, basename='weekly-evaluations-post')
 router.register(r'credit-sales', CreditSalesViewSet)
 router.register(r'credit-collections', CreditCollectionViewSet)
-router.register(r'captains', CaptainViewSet)
+router.register(r'captains-pump', CaptainViewSet, basename='pump-captain')
+router.register(r'captains-shop', CaptainViewSetShop, basename='shop-captain')
 router.register(r'active-attendants', ActiveAttendantViewSet, basename='active-attendant')
 router.register(r'daily-attendance-post', BulkAttendanceViewSet, basename='daily-attendance-post')
-
 
 
 

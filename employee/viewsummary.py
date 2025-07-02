@@ -196,7 +196,6 @@ class UserPerformanceSummaryFuel(APIView):
         }, status=status.HTTP_200_OK)
 
 
-
 class EvaluationSummaryView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -247,7 +246,6 @@ class EvaluationSummaryView(APIView):
         })
         
         
-
 class AttendanceSummaryView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -296,8 +294,6 @@ class AttendanceSummaryView(APIView):
             'qtr_score': average_score,
             'score_history': attendance_history
         }, status=status.HTTP_200_OK)
-
-
 
 
 class FuelSalesSummaryView(APIView):
